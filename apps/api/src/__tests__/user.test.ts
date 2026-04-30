@@ -1,8 +1,9 @@
+import { Request, Response, NextFunction } from "express";
 import { describe, it, expect, vi } from "vitest";
 import request from "supertest";
 import app from "../server.js";
 import { userQueries } from "@postly/database";
-import { CacheService } from "../services/cache.service.js";
+
 
 vi.mock("@postly/database", () => ({
   pool: { query: vi.fn(), end: vi.fn() },
@@ -19,8 +20,8 @@ vi.mock("../services/cache.service.js", () => ({
 }));
 
 vi.mock("../middleware/auth.js", () => ({
-  authenticateToken: (req: any, res: any, next: any) => {
-    req.user = { id: "test-id", email: "test@example.com" };
+  authenticateToken: (req: Request, res: Response, next: NextFunction) => {
+    (req as any).user = { id: "test-id", email: "test@example.com" };
     next();
   },
 }));
