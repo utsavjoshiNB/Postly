@@ -31,9 +31,8 @@ jobs:
             git fetch --all
             git reset --hard origin/main
 
-            # Rebuild and start all services
-            docker compose -f docker-compose.prod.yml build --no-cache
-            docker compose -f docker-compose.prod.yml up -d
+            # Build and start all services using cache
+            docker compose -f docker-compose.prod.yml up -d --build
 
             # Wait for API to become healthy
             echo "Waiting for API health check..."
@@ -56,9 +55,6 @@ jobs:
 
             # Run database migrations (if any)
             docker exec postly-api npm run migrate:up || echo "No migrations to run"
-
-            # Rebuild other services if needed
-            docker compose -f docker-compose.prod.yml up -d --build scraper bot
 
             # Cleanup old images
             docker image prune -f
