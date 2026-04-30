@@ -25,17 +25,17 @@
   "dependencies": {
     "@postly/config": "*",
     "@postly/shared-types": "*",
-    "drizzle-orm": "^0.45.1",
-    "pg": "^8.18.0",
-    "pgvector": "^0.2.0"
+    "drizzle-orm": "^0.45.2",
+    "pg": "^8.20.0",
+    "pgvector": "^0.2.1"
   },
   "devDependencies": {
     "@postly/eslint-config": "*",
     "@postly/typescript-config": "*",
-    "@types/pg": "^8.11.10",
-    "dotenv": "^16.4.7",
-    "drizzle-kit": "^0.31.9",
-    "eslint": "8",
-    "typescript": "^5.7.2"
+    "@types/pg": "^8.20.0",
+    "dotenv": "^17.4.2",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "10",
+    "typescript": "^6.0.3"
   }
 }
