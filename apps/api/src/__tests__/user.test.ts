@@ -4,7 +4,6 @@ import request from "supertest";
 import app from "../server.js";
 import { userQueries } from "@postly/database";
 
-
 vi.mock("@postly/database", () => ({
   pool: { query: vi.fn(), end: vi.fn() },
   userQueries: { findById: vi.fn(), update: vi.fn() },
