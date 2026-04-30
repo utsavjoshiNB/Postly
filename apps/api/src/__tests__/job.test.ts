@@ -17,7 +17,9 @@ vi.mock("../middleware/auth.js", () => ({
 
 describe("Job Routes (/api/v1/jobs)", () => {
   it("should list active jobs", async () => {
-    vi.mocked(jobQueries.findActive).mockResolvedValueOnce([{ id: "job-1" }] as any);
+    vi.mocked(jobQueries.findActive).mockResolvedValueOnce([
+      { id: "job-1" },
+    ] as any);
     vi.mocked(jobQueries.countActive).mockResolvedValueOnce(1);
     const res = await request(app).get("/api/v1/jobs?limit=10");
     expect(res.status).toBe(200);

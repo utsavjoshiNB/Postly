@@ -60,7 +60,9 @@ describe("Auth Routes (/api/v1/auth)", () => {
         .send({ email: "test@example.com", password: "short" });
 
       expect(response.status).toBe(400);
-      expect(response.body.error.message).toContain("Password must be at least 8 characters");
+      expect(response.body.error.message).toContain(
+        "Password must be at least 8 characters",
+      );
     });
 
     it("should register successfully with valid data", async () => {
@@ -81,7 +83,7 @@ describe("Auth Routes (/api/v1/auth)", () => {
 
     it("should handle AuthError correctly", async () => {
       authServiceMock.register.mockRejectedValueOnce(
-        new AuthError("Email already in use", 409, "EMAIL_EXISTS")
+        new AuthError("Email already in use", 409, "EMAIL_EXISTS"),
       );
 
       const response = await request(app)
@@ -118,7 +120,7 @@ describe("Auth Routes (/api/v1/auth)", () => {
 
     it("should return 401 for invalid credentials", async () => {
       authServiceMock.login.mockRejectedValueOnce(
-        new AuthError("Invalid email or password", 401, "INVALID_CREDENTIALS")
+        new AuthError("Invalid email or password", 401, "INVALID_CREDENTIALS"),
       );
 
       const response = await request(app)

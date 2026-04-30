@@ -180,8 +180,6 @@ export interface CreateJobInput {
   fingerprint?: string;
 }
 
-
-
 // Job Match types
 export interface JobMatch {
   id: string;

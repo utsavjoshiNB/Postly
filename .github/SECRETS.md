@@ -15,10 +15,10 @@ All secrets needed for CI/CD pipelines. Configure in **Settings → Secrets and 
 
 ### Docker Hub
 
-| Secret               | Description                           | Example                     |
-| -------------------- | ------------------------------------- | --------------------------- |
-| `DOCKERHUB_USERNAME` | Your Docker Hub username              | `utsavjoshi`                |
-| `DOCKERHUB_TOKEN`    | Access token generated via Docker Hub | `dckr_pat_xxxxxxx`          |
+| Secret               | Description                           | Example            |
+| -------------------- | ------------------------------------- | ------------------ |
+| `DOCKERHUB_USERNAME` | Your Docker Hub username              | `utsavjoshi`       |
+| `DOCKERHUB_TOKEN`    | Access token generated via Docker Hub | `dckr_pat_xxxxxxx` |
 
 ## How to Add Secrets
 

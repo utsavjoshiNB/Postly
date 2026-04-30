@@ -8,7 +8,11 @@
   "servers": [{ "url": "/api/v1" }],
   "components": {
     "securitySchemes": {
-      "bearerAuth": { "type": "http", "scheme": "bearer", "bearerFormat": "JWT" }
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
   },
   "security": [{ "bearerAuth": [] }],
@@ -23,7 +27,11 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": { "email": { "type": "string" }, "password": { "type": "string" }, "full_name": { "type": "string" } }
+                "properties": {
+                  "email": { "type": "string" },
+                  "password": { "type": "string" },
+                  "full_name": { "type": "string" }
+                }
               }
             }
           }
@@ -41,7 +49,10 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": { "email": { "type": "string" }, "password": { "type": "string" } }
+                "properties": {
+                  "email": { "type": "string" },
+                  "password": { "type": "string" }
+                }
               }
             }
           }
@@ -50,10 +61,16 @@
       }
     },
     "/auth/me": {
-      "get": { "tags": ["Auth"], "responses": { "200": { "description": "Current user" } } }
+      "get": {
+        "tags": ["Auth"],
+        "responses": { "200": { "description": "Current user" } }
+      }
     },
     "/users/profile": {
-      "get": { "tags": ["Users"], "responses": { "200": { "description": "User profile" } } },
+      "get": {
+        "tags": ["Users"],
+        "responses": { "200": { "description": "User profile" } }
+      },
       "patch": {
         "tags": ["Users"],
         "requestBody": {
@@ -62,7 +79,10 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": { "full_name": { "type": "string" }, "avatar_url": { "type": "string" } }
+                "properties": {
+                  "full_name": { "type": "string" },
+                  "avatar_url": { "type": "string" }
+                }
               }
             }
           }
@@ -71,7 +91,10 @@
       }
     },
     "/users/seeker-profile": {
-      "get": { "tags": ["Users"], "responses": { "200": { "description": "Seeker profile" } } },
+      "get": {
+        "tags": ["Users"],
+        "responses": { "200": { "description": "Seeker profile" } }
+      },
       "patch": {
         "tags": ["Users"],
         "requestBody": {
@@ -80,7 +103,10 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": { "headline": { "type": "string" }, "summary": { "type": "string" } }
+                "properties": {
+                  "headline": { "type": "string" },
+                  "summary": { "type": "string" }
+                }
               }
             }
           }
@@ -89,7 +115,10 @@
       }
     },
     "/users/employer-profile": {
-      "get": { "tags": ["Users"], "responses": { "200": { "description": "Employer profile" } } },
+      "get": {
+        "tags": ["Users"],
+        "responses": { "200": { "description": "Employer profile" } }
+      },
       "patch": {
         "tags": ["Users"],
         "requestBody": {
@@ -98,7 +127,10 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": { "company_name": { "type": "string" }, "company_website": { "type": "string" } }
+                "properties": {
+                  "company_name": { "type": "string" },
+                  "company_website": { "type": "string" }
+                }
               }
             }
           }
@@ -107,15 +139,29 @@
       }
     },
     "/jobs": {
-      "get": { "tags": ["Jobs"], "security": [], "responses": { "200": { "description": "List jobs" } } }
+      "get": {
+        "tags": ["Jobs"],
+        "security": [],
+        "responses": { "200": { "description": "List jobs" } }
+      }
     },
     "/jobs/matches": {
-      "get": { "tags": ["Jobs"], "responses": { "200": { "description": "Matched jobs" } } }
+      "get": {
+        "tags": ["Jobs"],
+        "responses": { "200": { "description": "Matched jobs" } }
+      }
     },
     "/jobs/{id}": {
       "get": {
         "tags": ["Jobs"],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
         "responses": { "200": { "description": "Job details" } }
       }
     },
@@ -125,7 +171,12 @@
         "requestBody": {
           "content": {
             "multipart/form-data": {
-              "schema": { "type": "object", "properties": { "resume": { "type": "string", "format": "binary" } } }
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "resume": { "type": "string", "format": "binary" }
+                }
+              }
             }
           }
         },
@@ -133,15 +184,26 @@
       }
     },
     "/resumes": {
-      "get": { "tags": ["Resumes"], "responses": { "200": { "description": "List resumes" } } }
+      "get": {
+        "tags": ["Resumes"],
+        "responses": { "200": { "description": "List resumes" } }
+      }
     },
     "/chat/conversations": {
-      "get": { "tags": ["Chat"], "responses": { "200": { "description": "List conversations" } } },
+      "get": {
+        "tags": ["Chat"],
+        "responses": { "200": { "description": "List conversations" } }
+      },
       "post": {
         "tags": ["Chat"],
         "requestBody": {
           "content": {
-            "application/json": { "schema": { "type": "object", "properties": { "initial_message": { "type": "string" } } } }
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": { "initial_message": { "type": "string" } }
+              }
+            }
           }
         },
         "responses": { "201": { "description": "Created" } }
@@ -156,7 +218,10 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": { "message": { "type": "string" }, "conversation_id": { "type": "string" } }
+                "properties": {
+                  "message": { "type": "string" },
+                  "conversation_id": { "type": "string" }
+                }
               }
             }
           }
@@ -165,13 +230,22 @@
       }
     },
     "/applications": {
-      "get": { "tags": ["Applications"], "responses": { "200": { "description": "List applications" } } },
+      "get": {
+        "tags": ["Applications"],
+        "responses": { "200": { "description": "List applications" } }
+      },
       "post": {
         "tags": ["Applications"],
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": { "type": "object", "properties": { "job_id": { "type": "string" }, "resume_id": { "type": "string" } } }
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "job_id": { "type": "string" },
+                  "resume_id": { "type": "string" }
+                }
+              }
             }
           }
         },

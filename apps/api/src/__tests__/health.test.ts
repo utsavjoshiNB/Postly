@@ -26,7 +26,9 @@ describe("GET /health", () => {
 
   it("should return 200 OK when both DB and Redis are healthy", async () => {
     // Setup mocks to resolve successfully
-    vi.mocked(pool.query).mockResolvedValueOnce({ rows: [{ "?column?": 1 }] } as any);
+    vi.mocked(pool.query).mockResolvedValueOnce({
+      rows: [{ "?column?": 1 }],
+    } as any);
     vi.mocked(redis.ping).mockResolvedValueOnce("PONG");
 
     const response = await request(app).get("/health");
@@ -39,13 +41,15 @@ describe("GET /health", () => {
           db: "ok",
           redis: "ok",
         },
-      })
+      }),
     );
   });
 
   it("should return 503 DEGRADED when DB fails", async () => {
     // DB fails, Redis succeeds
-    vi.mocked(pool.query).mockRejectedValueOnce(new Error("DB Connection Error"));
+    vi.mocked(pool.query).mockRejectedValueOnce(
+      new Error("DB Connection Error"),
+    );
     vi.mocked(redis.ping).mockResolvedValueOnce("PONG");
 
     const response = await request(app).get("/health");
@@ -58,14 +62,18 @@ describe("GET /health", () => {
           db: "failed",
           redis: "ok",
         },
-      })
+      }),
     );
   });
 
   it("should return 503 DEGRADED when Redis fails", async () => {
     // DB succeeds, Redis fails
-    vi.mocked(pool.query).mockResolvedValueOnce({ rows: [{ "?column?": 1 }] } as any);
-    vi.mocked(redis.ping).mockRejectedValueOnce(new Error("Redis Connection Error"));
+    vi.mocked(pool.query).mockResolvedValueOnce({
+      rows: [{ "?column?": 1 }],
+    } as any);
+    vi.mocked(redis.ping).mockRejectedValueOnce(
+      new Error("Redis Connection Error"),
+    );
 
     const response = await request(app).get("/health");
 
@@ -77,7 +85,7 @@ describe("GET /health", () => {
           db: "ok",
           redis: "failed",
         },
-      })
+      }),
     );
   });
 });
