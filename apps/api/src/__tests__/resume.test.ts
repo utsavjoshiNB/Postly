@@ -14,7 +14,7 @@ vi.mock("../services/resume.service.js", () => ({
 }));
 
 vi.mock("../middleware/auth.js", () => ({
-  authenticateToken: (req: any, res: any, next: any) => {
+  authenticateToken: (req: any, _res: any, next: any) => {
     req.user = { id: "test-id" };
     next();
   },

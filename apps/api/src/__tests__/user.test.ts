@@ -14,13 +14,13 @@ vi.mock("@postly/database", () => ({
 vi.mock("../services/cache.service.js", () => ({
   CacheService: {
     generateKey: vi.fn(),
-    getOrSet: vi.fn((key, ttl, fetcher) => fetcher()),
+    getOrSet: vi.fn((_key, _ttl, fetcher) => fetcher()),
     invalidate: vi.fn(),
   },
 }));
 
 vi.mock("../middleware/auth.js", () => ({
-  authenticateToken: (req: Request, res: Response, next: NextFunction) => {
+  authenticateToken: (req: Request, _res: Response, next: NextFunction) => {
     (req as any).user = { id: "test-id", email: "test@example.com" };
     next();
   },

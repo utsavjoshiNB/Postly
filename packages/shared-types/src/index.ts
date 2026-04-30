@@ -20,7 +20,7 @@ import {
   SeekerProfileData,
   SubscriptionStatus,
   DodoSubscriptionPayload,
-} from "./domain";
+} from "./domain.js";
 
 export type {
   Notification,

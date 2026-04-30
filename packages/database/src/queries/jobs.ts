@@ -1,7 +1,7 @@
 import { eq, desc, and, sql, isNull, ilike, isNotNull } from "drizzle-orm";
 import { getTableColumns } from "drizzle-orm";
-import { db } from "../index";
-import { jobs } from "../schema";
+import { db } from "../index.js";
+import { jobs } from "../schema.js";
 import type {
   Job,
   CreateJobInput,
